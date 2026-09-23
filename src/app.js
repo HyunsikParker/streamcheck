@@ -5,6 +5,7 @@ import { toFhirBundle } from './fhir.js';
 import { fetchWeather } from './weather.js';
 import { EXAMPLES } from './examples.js';
 import { OAH_SITES } from './oah-sites.js';
+import { readExif, distanceM, formatDistance, photoAgeHours } from './evidence.js';
 
 const KEY = 'streamcheck:v2';
 const app = document.getElementById('app');
@@ -20,7 +21,7 @@ let marker = null;
 let focusKey = null;
 
 function blank() {
-  return { site: { code: null, name: '', city: null, lat: null, lon: null }, weather: null, weatherState: 'idle', obs: {}, decisions: {}, createdAt: null, example: null };
+  return { site: { code: null, name: '', city: null, lat: null, lon: null }, weather: null, weatherState: 'idle', obs: {}, decisions: {}, evidence: { here: null, photos: {} }, createdAt: null, example: null };
 }
 function load() {
   try {
@@ -34,6 +35,7 @@ function save() {
   $('#history-count').textContent = store.history.length;
 }
 const d = () => store.draft;
+const ev = () => (d().evidence ||= { here: null, photos: {} });
 
 function go(name, opts = {}) {
   screen = name;
@@ -86,10 +88,20 @@ function place() {
   ${progress(0)}
   <div class="step-head"><span class="kicker">Step 1 of ${STEPS.length + 1}</span><h1>Where are you?</h1><p>Pick one of the 106 OneAquaHealth research sites (teal dots), or tap anywhere on the map to add your own spot.</p></div>
   <div id="map" role="application" aria-label="Map. Tap a research site or any point."></div>
-  <div class="row" style="margin-bottom:12px"><button class="btn secondary small" data-act="locate">Use my location</button>${s.code ? `<span class="site-chip">Research site ${esc(s.code)} · ${esc(s.city)}</span>` : ''}</div>
+  <div class="row" style="margin-bottom:12px"><button class="btn secondary small" data-act="locate">Use my location</button><button class="btn secondary small" data-act="here" ${s.lat === null ? 'disabled' : ''}>Confirm I'm here</button>${s.code ? `<span class="site-chip">Research site ${esc(s.code)} · ${esc(s.city)}</span>` : ''}</div>
+  <p class="note" id="here">${hereLine()}</p>
   <div class="field"><label for="site-name">Site name</label><input id="site-name" value="${esc(s.name)}" placeholder="e.g. Brook behind the school" autocomplete="off"></div>
   <div id="wx">${weatherBlock()}</div>
   <div class="nav"><button class="btn secondary" data-go="home">Back</button><button class="btn primary" data-act="next" ${s.lat === null ? 'disabled' : ''}>Next</button></div>`;
+}
+
+function hereLine() {
+  const h = ev().here;
+  const s = d().site;
+  if (!h || s.lat === null) return 'Optional: confirm you are at the site. Your position is only compared with the site, never sent anywhere.';
+  const dist = distanceM(h.lat, h.lon, s.lat, s.lon);
+  const ok = dist <= Math.max(500, h.accuracy || 0);
+  return `${ok ? '✓' : '⚠'} Your phone is ${formatDistance(dist)} from this site (±${Math.round(h.accuracy || 0)} m).`;
 }
 
 function weatherBlock() {
@@ -114,6 +126,8 @@ async function setSite(lat, lon, oah = null) {
     if (map) { if (marker) marker.setLatLng([s.lat, s.lon]); else marker = L.marker([s.lat, s.lon]).addTo(map); }
     $('#site-name').value = s.name;
     $('[data-act="next"]')?.removeAttribute('disabled');
+    $('[data-act="here"]')?.removeAttribute('disabled');
+    if ($('#here')) $('#here').textContent = hereLine();
     const row = $('.site-chip');
     if (s.code && !row) $('[data-act="locate"]').insertAdjacentHTML('afterend', `<span class="site-chip">Research site ${esc(s.code)} · ${esc(s.city)}</span>`);
     else if (row) row.outerHTML = s.code ? `<span class="site-chip">Research site ${esc(s.code)} · ${esc(s.city)}</span>` : '';
@@ -167,6 +181,19 @@ function question(f, flagged) {
     return `<div class="q ${flagged ? 'flagged' : ''}" id="q-${f.id}"><label class="q-label" for="in-${f.id}">${esc(f.label)}${f.optional ? ' <small>(optional)</small>' : ''}</label><br>${term(f)}
       <div class="num"><input id="in-${f.id}" data-num="${f.id}" type="number" inputmode="decimal" min="${f.min}" max="${f.max}" step="${f.step || 0.1}" value="${v ?? ''}"><span class="unit">${esc(f.unit)}</span></div></div>`;
   }
+  if (f.type === 'photos') {
+    const ph = ev().photos;
+    return `<div class="q" id="q-${f.id}"><div class="q-label">${esc(f.label)}</div>${term(f)}
+      <div class="photos">${f.slots.map((sl) => {
+        const p = ph[sl.id];
+        return `<div class="photo">
+          <label class="shot">${p?.thumb ? `<img src="${p.thumb}" alt="${esc(sl.label)} photo">` : `<span>+ ${esc(sl.label)}</span>`}
+            <input type="file" accept="image/*" capture="environment" data-slot="${sl.id}" aria-label="${esc(sl.label)} photo"></label>
+          <div class="meta">${p ? photoMeta(p) : esc(sl.label)}</div>
+          ${p ? `<button class="link inline" data-rmphoto="${sl.id}">Remove</button>` : ''}
+        </div>`;
+      }).join('')}</div></div>`;
+  }
   if (f.type === 'feelings') {
     const cur = v || {};
     return `<div class="q" id="q-${f.id}"><div class="q-label">${esc(f.label)}</div>${term(f)}
@@ -190,6 +217,39 @@ function paired(s, flagged) {
         return `<fieldset class="side" id="q-${key}"><legend>${side.label}</legend><div class="seg">${f.options.map((o) => `<label class="segopt"><input type="radio" name="${key}" value="${o.value}" ${d().obs[key] === o.value ? 'checked' : ''}><span>${esc(o.value === 'NS' ? 'Not sure' : o.label)}</span></label>`).join('')}</div></fieldset>`;
       }).join('')}</div>
     </div>`).join('');
+}
+
+function photoMeta(p) {
+  const s = d().site;
+  const bits = [];
+  if (p.takenLocal) {
+    const age = photoAgeHours(p.takenLocal, new Date(d().createdAt || Date.now()));
+    bits.push(`taken ${p.takenLocal.replace('T', ' ').slice(0, 16)}${age !== null && age > 48 ? ' ⚠ older than 2 days' : ''}`);
+  } else bits.push('no capture time');
+  if (Number.isFinite(p.lat) && s.lat !== null) {
+    const dist = distanceM(p.lat, p.lon, s.lat, s.lon);
+    bits.push(`${dist <= 500 ? '✓' : '⚠'} ${formatDistance(dist)} from site`);
+  } else bits.push('no location in file');
+  return esc(bits.join(' · '));
+}
+
+async function addPhoto(slot, file) {
+  const buf = await file.arrayBuffer();
+  const exif = readExif(buf);
+  const sha = async (algo) => new Uint8Array(await crypto.subtle.digest(algo, buf));
+  const hex = [...(await sha('SHA-256'))].map((b) => b.toString(16).padStart(2, '0')).join('');
+  const sha1 = btoa(String.fromCharCode(...(await sha('SHA-1'))));
+  let thumb = null;
+  try {
+    const bmp = await createImageBitmap(file);
+    const scale = Math.min(1, 360 / Math.max(bmp.width, bmp.height));
+    const c = Object.assign(document.createElement('canvas'), { width: Math.round(bmp.width * scale), height: Math.round(bmp.height * scale) });
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    thumb = c.toDataURL('image/jpeg', 0.7);
+  } catch { /* unsupported image format; keep metadata only */ }
+  ev().photos[slot] = { name: file.name, type: file.type || 'image/jpeg', size: file.size, sha256: hex, sha1, thumb, ...exif };
+  save();
+  render();
 }
 
 function readInputs() {
@@ -223,7 +283,7 @@ function onOptionChange(inp) {
 // ---------- second look ----------
 
 function currentFlags() {
-  return runChecks(d().obs, d().weather);
+  return runChecks(d().obs, d().weather, ev(), d().site, new Date(d().createdAt || Date.now()));
 }
 
 function review() {
@@ -248,7 +308,7 @@ function review() {
 
 function flagCard(f) {
   const dec = d().decisions[f.id];
-  const answers = f.fields.filter((k) => d().obs[k] !== undefined).map((k) => `${keyLabel(k)}: ${optionLabel(k, d().obs[k], true)}`).join(' · ');
+  const answers = f.fields.includes('here') ? hereLine() : f.fields.includes('photos') ? '' : f.fields.filter((k) => d().obs[k] !== undefined).map((k) => `${keyLabel(k)}: ${optionLabel(k, d().obs[k], true)}`).join(' · ');
   const alert = f.severity === 'alert';
   const tag = alert ? '<span class="tag alert">Safety</span>' : dec ? '<span class="tag ok">Kept</span>' : '<span class="tag">Check</span>';
   return `<article class="flag ${alert ? 'alert' : ''} ${dec ? 'resolved' : ''}" data-flag="${f.id}">
@@ -273,7 +333,7 @@ function buildRecord() {
   return {
     id: d().createdAt || new Date().toISOString(),
     createdAt: d().createdAt || new Date().toISOString(),
-    site: { ...d().site }, weather: d().weather, obs: structuredClone(d().obs),
+    site: { ...d().site }, weather: d().weather, obs: structuredClone(d().obs), evidence: structuredClone(ev()),
     flags, decisions: structuredClone(d().decisions), groups, suggestion: sugg,
     agreement: agreement(d().obs.overall, sugg),
     confidence: confidence(d().obs, flags, d().decisions),
@@ -293,7 +353,7 @@ function result() {
   const decided = r.flags.filter((f) => f.severity !== 'alert');
   return `
   <section class="result-top">
-    <div class="rt-site"><span class="kicker">${r.site.code ? `OneAquaHealth site ${esc(r.site.code)} · ${esc(r.site.city)}` : 'Citizen site'}</span><h1>${esc(r.site.name || 'Unnamed site')}</h1><p>${new Date(r.createdAt).toLocaleString()} · confidence <b>${r.confidence.level}</b> · ${esc(r.confidence.why)}</p></div>
+    <div class="rt-site"><span class="kicker">${r.site.code ? `OneAquaHealth site ${esc(r.site.code)} · ${esc(r.site.city)}` : 'Citizen site'}</span><h1>${esc(r.site.name || 'Unnamed site')}</h1><p>${new Date(r.createdAt).toLocaleString()} · confidence <b>${r.confidence.level}</b> · ${esc(r.confidence.why)}</p><p class="evline">${esc(evidenceLine(r))}</p></div>
     <div class="compare big">
       <div><span class="kicker">Your rating (recorded)</span><span class="cls ${own.toLowerCase()}">${CLASS_NAME[own]}</span></div>
       <div><span class="kicker">Indicator view</span><span class="cls ${r.suggestion.level.toLowerCase()}">${r.suggestion.label}</span></div>
@@ -309,6 +369,21 @@ function result() {
     <div class="row"><button class="btn secondary" data-act="fhir">Download FHIR bundle</button><button class="btn secondary" data-act="csv">Download CSV</button><button class="btn secondary" data-act="showfhir">Preview FHIR</button></div>
     <pre class="json" id="fhir-preview" hidden></pre></div>
   <div class="nav"><button class="btn secondary" data-act="prev">Back</button><button class="btn primary" data-act="save">Save to my records</button></div>`;
+}
+
+function evidenceLine(r) {
+  const parts = [];
+  const e = r.evidence || {};
+  if (e.here && r.site.lat !== null) {
+    const dist = distanceM(e.here.lat, e.here.lon, r.site.lat, r.site.lon);
+    parts.push(`${dist <= Math.max(500, e.here.accuracy || 0) ? 'On site' : 'Away from site'}: phone ${formatDistance(dist)} from it`);
+  } else parts.push('Location not confirmed');
+  const photos = Object.values(e.photos || {}).filter(Boolean);
+  if (photos.length) {
+    const located = photos.filter((p) => Number.isFinite(p.lat) && distanceM(p.lat, p.lon, r.site.lat, r.site.lon) <= 500).length;
+    parts.push(`${photos.length} photo${photos.length > 1 ? 's' : ''}, ${located} placed at the site by their own metadata`);
+  } else parts.push('no photos');
+  return `Field evidence: ${parts.join(' · ')}.`;
 }
 
 function download(name, text, type) {
@@ -380,6 +455,7 @@ const after = {
 // ---------- events ----------
 
 app.addEventListener('change', (e) => {
+  if (e.target.matches('input[type=file][data-slot]') && e.target.files[0]) { addPhoto(e.target.dataset.slot, e.target.files[0]); return; }
   if (e.target.matches('input[type=radio], input[type=checkbox]')) onOptionChange(e.target);
 });
 app.addEventListener('input', (e) => {
@@ -407,6 +483,16 @@ document.addEventListener('click', async (e) => {
   const act = t.dataset.act;
   if (act === 'start') { store.draft = blank(); go('place'); return; }
   if (act === 'resume') { go('place'); return; }
+  if (act === 'here') {
+    if (!navigator.geolocation) return toast('Location is not available in this browser');
+    navigator.geolocation.getCurrentPosition((p) => {
+      ev().here = { lat: p.coords.latitude, lon: p.coords.longitude, accuracy: p.coords.accuracy, at: new Date().toISOString() };
+      save();
+      if ($('#here')) $('#here').textContent = hereLine();
+    }, () => toast('Location permission was not given'), { enableHighAccuracy: true, timeout: 15000 });
+    return;
+  }
+  if (t.dataset.rmphoto) { delete ev().photos[t.dataset.rmphoto]; save(); render(); return; }
   if (act === 'locate') {
     if (!navigator.geolocation) return toast('Location is not available in this browser');
     navigator.geolocation.getCurrentPosition((p) => { map?.setView([p.coords.latitude, p.coords.longitude], 16); setSite(p.coords.latitude, p.coords.longitude); }, () => toast('Location permission was not given'));
@@ -432,6 +518,7 @@ document.addEventListener('click', async (e) => {
   if (t.dataset.undo) { delete d().decisions[t.dataset.undo]; save(); render(); return; }
   if (t.dataset.change) {
     const flag = currentFlags().find((f) => f.id === t.dataset.change);
+    if (flag.fields.includes('here')) { go('place'); return; }
     const key = flag.fields.find((k) => d().obs[k] !== undefined) || flag.fields[0];
     const idx = STEPS.findIndex((s) => s.fields.some((f) => answerKeys(f).includes(key)));
     go('step', { step: Math.max(0, idx), focus: key });

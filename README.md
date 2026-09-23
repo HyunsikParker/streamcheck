@@ -19,7 +19,8 @@ Built for the IEEE OneAquaHealth Global Hackathon 2026, **Track 3: AI-Supported 
    - water temperature more than 10 °C away from the 3-day air mean.
    Each flag shows the answers involved, the reason and the data source. Safety notes (foam next to a discharge, possible cyanobacteria, oil next to an outfall) never block the record.
 5. **Result.** The citizen's rating is the recorded one. Next to it, an indicator view on the same scale (channel and banks, water, margins, flow pressures), how far apart the two are, a confidence level, One Health notes for the ecosystem, animals and people, and the list of second-look decisions.
-6. **Export.** FHIR R4 Bundle, CSV, and a local history with a map.
+6. **Field evidence (optional).** "Confirm I'm here" compares the phone's position with the chosen site. Upstream, downstream and surroundings photos, as in the OAH app, are read on the device for their capture time and GPS. Being more than 500 m away (or beyond the GPS accuracy), a photo taken elsewhere, or a photo older than two days each raise a second-look check. Photos never leave the device; only size and hashes are kept.
+7. **Export.** FHIR R4 Bundle, CSV, and a local history with a map.
 
 Nothing is sent anywhere except the weather request. Records stay in the browser. The app installs as a PWA and works offline after the first visit (the service worker caches the app shell); without a connection, weather checks are skipped and the app says so.
 
@@ -33,6 +34,8 @@ Nothing is sent anywhere except the weather request. Records stay in the browser
 | Citizen questions (not modelled in the IG yet) | second coding from the proposed [`citizen-question`](docs/fhir/CodeSystem-citizen-question.json) CodeSystem; answers from [`citizen-answer`](docs/fhir/CodeSystem-citizen-answer.json), reusing OAH app codes |
 | Left and right margins | one Observation per question with two components |
 | Second-look decisions | `Observation.note` on the answer concerned |
+| Photos | `Media` (image) with size and SHA-1 hash, capture time and distance to the site as notes; the image is not exported |
+| Phone position | `Observation` of the distance to the site; raw device coordinates are not exported |
 | Indicator view | separate Observation, performer "StreamCheck indicator rules v1", `derivedFrom` all inputs |
 
 An example bundle is in [`docs/fhir/example-bundle-toulouse-T5.json`](docs/fhir/example-bundle-toulouse-T5.json). Checked on validator.fhir.org (FHIR 4.0.1): 0 errors. The remaining warnings are that the OAH profiles are not published yet and that the proposed code systems are not on a terminology server ([summary](docs/fhir/validation-summary.txt)).
@@ -53,7 +56,7 @@ Open http://localhost:8000.
 node --test
 ```
 
-Node.js 20 or newer. 15 tests cover the answer codes, every check, the indicator view and its cap, confidence, One Health notes, the FHIR bundle (profiles, required elements, references), the weather summary and the bundled sites.
+Node.js 20 or newer. 22 tests cover the answer codes, every check, the indicator view and its cap, confidence, One Health notes, the FHIR bundle (profiles, required elements, references, Media), the weather summary, the bundled sites, distance and EXIF parsing (with a synthetic JPEG), and the evidence checks.
 
 Regenerate the code systems and re-validate:
 
@@ -71,6 +74,7 @@ python3 scripts/validate.py docs/fhir/example-bundle-toulouse-T5.json docs/fhir/
 | `src/score.js` | Indicator view, agreement with the citizen's rating, confidence, One Health notes |
 | `src/fhir.js` | FHIR R4 Bundle following the OAH IG profiles |
 | `src/weather.js` | Open-Meteo request and 48 h / 72 h summaries |
+| `src/evidence.js` | Distance to the site and a minimal on-device EXIF reader (capture time, GPS) |
 | `src/oah-sites.js` | The 106 OAH research sites from `api.enora-oah.eu/api/sites/all` (retrieved 2026-09-23) |
 | `src/app.js` | Screens, map, state, exports |
 
@@ -87,7 +91,7 @@ python3 scripts/validate.py docs/fhir/example-bundle-toulouse-T5.json docs/fhir/
 
 - The indicator view is decision support on the OAH three-class scale, not a validated ecological index.
 - Weather comes from a model grid, not a gauge at the stream.
-- Photos and video, which the OAH app collects, are not part of this prototype.
+- Video, which the OAH app collects, is not part of this prototype. Phones that strip location from photos leave the photo check with nothing to compare, and the app says so.
 - No upload to the OAH backend: citizen submissions there need a Community account.
 
 ## License

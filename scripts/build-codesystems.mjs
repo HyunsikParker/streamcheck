@@ -19,6 +19,7 @@ questions.push(
   { code: 'airMean3d', display: 'Mean air temperature, last 3 days', definition: 'Mean hourly air temperature over the 72 hours before the assessment' },
   { code: 'airMaxToday', display: 'Maximum air temperature today', definition: 'Highest hourly air temperature on the local calendar day' },
   { code: 'indicatorSuggestion', display: 'Indicator-based condition suggestion', definition: 'Decision-support class on the OAH Good/Moderate/Poor scale; not a measurement' },
+  { code: 'observerDistance', display: 'Distance between the observer and the site', definition: 'Metres between the citizen device position and the selected site; device coordinates are not exported' },
 );
 for (const lvl of ['GOOD', 'MODERATE', 'POOR']) if (!answers.some((a) => a.code === `overall.${lvl}`)) answers.push({ code: `overall.${lvl}`, display: lvl });
 

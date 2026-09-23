@@ -11,7 +11,7 @@
   "description": "Proposed codes for the OneAquaHealth citizen stream assessment, which the OAH FHIR IG (hl7-eu/oah 0.1.0) does not model yet. Answer codes reuse the OAH app codes (api.enora-oah.eu/api/citizens/*).",
   "caseSensitive": true,
   "content": "complete",
-  "count": 40,
+  "count": 42,
   "concept": [
     {
       "code": "channelForm",
@@ -179,6 +179,11 @@
       "definition": "Who uses the water here?"
     },
     {
+      "code": "photos",
+      "display": "Photographic evidence",
+      "definition": "Add photos"
+    },
+    {
       "code": "overall",
       "display": "Overall stream assessment",
       "definition": "How would you rate this stretch of stream?"
@@ -212,6 +217,11 @@
       "code": "indicatorSuggestion",
       "display": "Indicator-based condition suggestion",
       "definition": "Decision-support class on the OAH Good/Moderate/Poor scale; not a measurement"
+    },
+    {
+      "code": "observerDistance",
+      "display": "Distance between the observer and the site",
+      "definition": "Metres between the citizen device position and the selected site; device coordinates are not exported"
     }
   ]
 }

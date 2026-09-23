@@ -71,6 +71,15 @@ export const STEPS = [
     ],
   },
   {
+    id: 'photos',
+    title: 'Photos (optional)',
+    hint: 'As in the OneAquaHealth app: one looking upstream, one downstream, one of the surroundings. They stay on your device; StreamCheck only reads when and where each was taken.',
+    fields: [
+      { id: 'photos', label: 'Add photos', term: 'Photographic evidence', type: 'photos',
+        slots: [{ id: 'up', label: 'Upstream' }, { id: 'down', label: 'Downstream' }, { id: 'around', label: 'Surroundings' }] },
+    ],
+  },
+  {
     id: 'overall',
     title: 'Your overall assessment',
     hint: 'Your own judgement. StreamCheck will show its indicator-based view next to it, but yours is the one recorded.',

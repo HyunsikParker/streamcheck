@@ -1,11 +1,11 @@
 // Offline support: the app shell is cached so an assessment can be filled in
 // without signal. Weather needs the network; without it, weather checks are
 // skipped and the app says so.
-const CACHE = 'streamcheck-v1';
+const CACHE = 'streamcheck-v2';
 const SHELL = [
   './', './index.html', './styles.css', './manifest.webmanifest', './icon.svg',
   './src/app.js', './src/protocol.js', './src/checks.js', './src/score.js', './src/fhir.js',
-  './src/weather.js', './src/examples.js', './src/oah-sites.js',
+  './src/weather.js', './src/examples.js', './src/oah-sites.js', './src/evidence.js',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
 ];

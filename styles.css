@@ -284,3 +284,14 @@ pre.json { max-height: 280px; overflow: auto; background: #0b1f22; color: #cfe9e
 .hitem { grid-template-columns: auto 1fr auto; }
 @media (min-width: 700px) { .groups { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 330px) { .pair { grid-template-columns: 1fr; } }
+
+/* ---- photos ---- */
+.photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.photo { display: grid; gap: 6px; align-content: start; }
+.shot { position: relative; display: grid; place-items: center; aspect-ratio: 3 / 4; border: 2px dashed var(--line-2); border-radius: 12px; background: var(--paper); overflow: hidden; cursor: pointer; color: var(--muted); font-weight: 700; font-size: 14px; text-align: center; padding: 6px; }
+.shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.shot input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.shot:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+.photo .meta { font: 12px/1.4 var(--mono); color: var(--muted); }
+@media (max-width: 420px) { .photos { grid-template-columns: 1fr 1fr; } }
+.evline { margin-top: 4px !important; font: 13px/1.4 var(--mono); color: var(--water) !important; }

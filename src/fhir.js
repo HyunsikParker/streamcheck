@@ -9,6 +9,7 @@
 // Second-look decisions travel as Observation.note on the answer they concern.
 
 import { STEPS, answerKeys, fieldOf } from './protocol.js';
+import { distanceM } from './evidence.js';
 
 export const OAH_IG = 'http://hl7.eu/fhir/ig/oah';
 export const OAH_CS = `${OAH_IG}/CodeSystem/temporarySystem-oah-eu`;
@@ -30,6 +31,7 @@ const xml = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 function narrative(r) {
   let text;
   if (r.resourceType === 'Location') text = `${r.name}${r.position ? ` (${r.position.latitude}, ${r.position.longitude})` : ''}`;
+  else if (r.resourceType === 'Media') text = `${r.content.title}: ${r.content.contentType}, ${r.content.size} bytes`;
   else {
     const v = r.valueCodeableConcept?.text ?? (r.valueQuantity ? `${r.valueQuantity.value} ${r.valueQuantity.unit}` : (r.component || []).map((c) => `${c.code.coding[0].display}: ${c.valueCodeableConcept?.text ?? `${c.valueQuantity?.value} ${c.valueQuantity?.unit ?? ''}`}`).join('; '));
     text = `${r.code.text}: ${v}`;
@@ -53,7 +55,7 @@ function answer(field, value) {
 }
 
 export function toFhirBundle(record) {
-  const { obs, weather, flags = [], decisions = {}, site = {}, createdAt, suggestion: sugg } = record;
+  const { obs, weather, flags = [], decisions = {}, site = {}, createdAt, suggestion: sugg, evidence = {} } = record;
   const when = createdAt || new Date().toISOString();
   const entry = [];
   const add = (resource) => {
@@ -137,6 +139,36 @@ export function toFhirBundle(record) {
         .filter(([k]) => Number.isFinite(weather[k]))
         .map(([k, display, ucum, unit]) => ({ code: { coding: [{ system: SC_QUESTION, code: k, display }] }, valueQuantity: { value: weather[k], unit, system: 'http://unitsofmeasure.org', code: ucum } })),
     }));
+  }
+
+  const hasSite = Number.isFinite(site.lat) && Number.isFinite(site.lon);
+  if (evidence.here && hasSite) {
+    inputs.push(add({
+      ...base(),
+      performer: [{ display: 'Citizen device location' }],
+      effectiveDateTime: evidence.here.at || when,
+      code: { coding: [{ system: SC_QUESTION, code: 'observerDistance', display: 'Distance between the observer and the site' }], text: 'Distance between the observer and the site' },
+      valueQuantity: { value: Math.round(distanceM(evidence.here.lat, evidence.here.lon, site.lat, site.lon)), unit: 'm', system: 'http://unitsofmeasure.org', code: 'm' },
+      note: [{ text: `Device accuracy ±${Math.round(evidence.here.accuracy || 0)} m. Raw device coordinates are not exported.` }],
+    }));
+  }
+  const SLOT_TITLE = { up: 'Upstream photo', down: 'Downstream photo', around: 'Surroundings photo' };
+  for (const [slot, ph] of Object.entries(evidence.photos || {})) {
+    if (!ph) continue;
+    const notes = [];
+    notes.push(ph.takenLocal ? `Capture time in file (device local time): ${ph.takenLocal}.` : 'No capture time in file.');
+    if (Number.isFinite(ph.lat) && hasSite) notes.push(`Location in file is ${Math.round(distanceM(ph.lat, ph.lon, site.lat, site.lon))} m from the site.`);
+    else notes.push('No location in file.');
+    notes.push(`SHA-256 ${ph.sha256}. The image itself stays on the citizen's device.`);
+    add({
+      resourceType: 'Media',
+      status: 'completed',
+      type: { coding: [{ system: 'http://terminology.hl7.org/CodeSystem/media-type', code: 'image', display: 'Image' }] },
+      subject: { reference: `urn:uuid:${locId}` },
+      operator: { display: 'Citizen scientist (anonymous)' },
+      content: { contentType: ph.type || 'image/jpeg', size: ph.size, hash: ph.sha1, title: SLOT_TITLE[slot] || 'Photo' },
+      note: notes.map((text) => ({ text })),
+    });
   }
 
   if (sugg && sugg.level !== 'UNKNOWN') {

@@ -3,7 +3,11 @@
 // Rules never change an answer: the citizen keeps it (optionally saying why)
 // or changes it, and that decision is stored with the record.
 
+import { distanceM, formatDistance, photoAgeHours } from './evidence.js';
+
 const has = (list, v) => Array.isArray(list) && list.includes(v);
+const FAR_M = 500;
+const SLOT = { up: 'upstream', down: 'downstream', around: 'surroundings' };
 const fmt = (n, d = 1) => (Number.isFinite(n) ? Number(n).toFixed(d).replace(/\.0$/, '') : '?');
 const SIDE = { L: 'left', R: 'right' };
 
@@ -133,7 +137,7 @@ export const RULES = [
     explain: () => ({
       title: 'Many answers are "not sure"',
       why: 'That is fine, and honest. Records with many unsure answers carry less weight in city dashboards.',
-      ask: 'If you can, take upstream, downstream and surroundings photos in the official app so experts can fill the gaps.',
+      ask: 'If you can, add upstream, downstream and surroundings photos so experts can fill the gaps.',
     }),
   },
   {
@@ -197,7 +201,53 @@ export const RULES = [
   },
 ];
 
-export function runChecks(obs, weather = null) {
+// Evidence rules compare where the phone and the photos were with the chosen site.
+export function evidenceChecks(evidence = {}, site = {}, assessedAt = new Date()) {
+  const flags = [];
+  const hasSite = Number.isFinite(site.lat) && Number.isFinite(site.lon);
+  const here = evidence.here;
+  if (hasSite && here && Number.isFinite(here.lat)) {
+    const dist = distanceM(here.lat, here.lon, site.lat, site.lon);
+    const slack = Math.max(FAR_M, Number(here.accuracy) || 0);
+    if (dist > slack) {
+      flags.push({
+        id: 'far-from-site', severity: 'check', fields: ['here'],
+        title: 'You seem to be away from the chosen site',
+        why: `Your phone placed you ${formatDistance(dist)} from ${site.name || 'the chosen site'} (accuracy ±${Math.round(here.accuracy || 0)} m).`,
+        ask: 'Pick the site you are actually at, or keep it if you are recording from notes after the visit, and say so.',
+        evidence: 'Device location at the time of the assessment',
+      });
+    }
+  }
+  for (const [slot, ph] of Object.entries(evidence.photos || {})) {
+    if (!ph) continue;
+    if (hasSite && Number.isFinite(ph.lat)) {
+      const dist = distanceM(ph.lat, ph.lon, site.lat, site.lon);
+      if (dist > FAR_M) {
+        flags.push({
+          id: `photo-far-${slot}`, severity: 'check', fields: ['photos'],
+          title: `The ${SLOT[slot]} photo was taken elsewhere`,
+          why: `The photo's location data places it ${formatDistance(dist)} from ${site.name || 'the chosen site'}.`,
+          ask: 'Replace it with a photo from this site, or keep it and explain.',
+          evidence: 'EXIF GPS position stored in the photo',
+        });
+      }
+    }
+    const age = photoAgeHours(ph.takenLocal, assessedAt);
+    if (age !== null && age > 48) {
+      flags.push({
+        id: `photo-old-${slot}`, severity: 'check', fields: ['photos'],
+        title: `The ${SLOT[slot]} photo is older than this visit`,
+        why: `It was taken ${age >= 48 ? `${Math.round(age / 24)} days` : `${Math.round(age)} hours`} before this assessment, so it may not show today's conditions.`,
+        ask: 'Take a new photo if you can, or keep it and say when you were last there.',
+        evidence: 'EXIF capture time stored in the photo',
+      });
+    }
+  }
+  return flags;
+}
+
+export function runChecks(obs, weather = null, evidence = null, site = null, assessedAt = new Date()) {
   const w = weather || {};
   const flags = [];
   for (const rule of RULES) {
@@ -205,6 +255,7 @@ export function runChecks(obs, weather = null) {
     if (!rule.test(obs, w)) continue;
     flags.push({ id: rule.id, severity: rule.severity, fields: rule.fields, ...rule.explain(obs, w) });
   }
+  if (evidence && site) flags.push(...evidenceChecks(evidence, site, assessedAt));
   return flags;
 }
 
