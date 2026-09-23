@@ -1,0 +1,9 @@
+example-bundle-toulouse-T5.json {'INFORMATION': 26, 'WARNING': 126}
+   warning x96: custom code system
+   warning x26: profile not published
+   warning x3: Error performing tx5 operation 'validate-code: timeout' (parameters = "")
+   warning x1: None of the codings provided are in the value set 'ServiceDeliveryLocationRoleType' (http:
+CodeSystem-citizen-question.json {'WARNING': 1}
+   warning x1: Constraint failed: dom-6: 'A resource should have narrative for robust management' (define
+CodeSystem-citizen-answer.json {'WARNING': 1}
+   warning x1: Constraint failed: dom-6: 'A resource should have narrative for robust management' (define

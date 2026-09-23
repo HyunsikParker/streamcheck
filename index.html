@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>StreamCheck — citizen stream assessment with a second look</title>
+  <meta name="description" content="A guided stream assessment for citizen scientists. Checks answers against each other and recent weather, explains why, and exports FHIR R4 for One Health data systems.">
+  <meta name="theme-color" content="#0b3a40">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b3a40'/%3E%3Cpath d='M6 19c3-3 5-3 8 0s5 3 8 0 4-2 4-2' stroke='%237fd1c7' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M10 12l3 3 6-6' stroke='%23f4efe4' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="brand" href="#home" data-go="home" aria-label="StreamCheck home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path class="wave" d="M6 19c3-3 5-3 8 0s5 3 8 0 4-2 4-2"/><path class="tick" d="M10 12l3 3 6-6"/></svg>
+      <span>Stream<b>Check</b></span>
+    </a>
+    <nav class="bar-nav">
+      <button type="button" class="link" data-go="history">My records <span id="history-count" class="count">0</span></button>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="foot">
+    Prototype for the IEEE OneAquaHealth Global Hackathon 2026 · Track 3, AI-supported assessment.
+    Weather: <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a>. Map: © OpenStreetMap contributors.
+    Records stay in this browser. <a href="https://github.com/HyunsikParker/streamcheck" rel="noopener">Source</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

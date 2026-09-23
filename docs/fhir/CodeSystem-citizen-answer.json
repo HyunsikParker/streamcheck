@@ -1,0 +1,402 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "citizen-answer",
+  "url": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+  "version": "0.1.0",
+  "name": "StreamCheckcitizenanswers",
+  "title": "StreamCheck citizen answers",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "StreamCheck (IEEE OneAquaHealth Global Hackathon 2026 prototype)",
+  "description": "Proposed codes for the OneAquaHealth citizen stream assessment, which the OAH FHIR IG (hl7-eu/oah 0.1.0) does not model yet. Answer codes reuse the OAH app codes (api.enora-oah.eu/api/citizens/*).",
+  "caseSensitive": true,
+  "content": "complete",
+  "count": 77,
+  "concept": [
+    {
+      "code": "channelForm.FLAT",
+      "display": "Flat and wide",
+      "definition": "Flat and wide"
+    },
+    {
+      "code": "channelForm.U",
+      "display": "U shape",
+      "definition": "U shape"
+    },
+    {
+      "code": "channelForm.V",
+      "display": "V shape, steep sides",
+      "definition": "V shape, steep sides"
+    },
+    {
+      "code": "channelForm.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "channelType.NAT",
+      "display": "Natural",
+      "definition": "Natural: stones, sand, mud"
+    },
+    {
+      "code": "channelType.ART",
+      "display": "Artificial",
+      "definition": "Artificial: concrete, or stones set in concrete"
+    },
+    {
+      "code": "channelType.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "bankType.NAT",
+      "display": "Natural",
+      "definition": "Natural soil and plants"
+    },
+    {
+      "code": "bankType.ART",
+      "display": "Concrete",
+      "definition": "Concrete, or stones set in concrete"
+    },
+    {
+      "code": "bankType.LAS",
+      "display": "Laid stones",
+      "definition": "Laid stones without concrete"
+    },
+    {
+      "code": "bankType.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "habitats.SB",
+      "display": "Sand banks",
+      "definition": "Sand banks"
+    },
+    {
+      "code": "habitats.SI",
+      "display": "Sand islands",
+      "definition": "Sand islands"
+    },
+    {
+      "code": "habitats.SD",
+      "display": "Stone deposits",
+      "definition": "Stone deposits"
+    },
+    {
+      "code": "habitats.RF",
+      "display": "Riffles, rapids or small falls",
+      "definition": "Riffles, rapids or small falls"
+    },
+    {
+      "code": "habitats.AV",
+      "display": "Plants growing in the water",
+      "definition": "Plants growing in the water"
+    },
+    {
+      "code": "habitats.NONE",
+      "display": "None of these",
+      "definition": "None of these"
+    },
+    {
+      "code": "fallenBiomass.FT",
+      "display": "Fallen trees",
+      "definition": "Fallen trees"
+    },
+    {
+      "code": "fallenBiomass.FB",
+      "display": "Fallen branches",
+      "definition": "Fallen branches"
+    },
+    {
+      "code": "fallenBiomass.FL",
+      "display": "Piles of leaves",
+      "definition": "Piles of leaves"
+    },
+    {
+      "code": "fallenBiomass.NONE",
+      "display": "None",
+      "definition": "None"
+    },
+    {
+      "code": "waterFlow.FAS",
+      "display": "Fast, with waves",
+      "definition": "Fast, with waves"
+    },
+    {
+      "code": "waterFlow.NOR",
+      "display": "Slow",
+      "definition": "Slow"
+    },
+    {
+      "code": "waterFlow.STA",
+      "display": "Standing",
+      "definition": "Standing, or only now and then"
+    },
+    {
+      "code": "waterFlow.DRY",
+      "display": "Dry",
+      "definition": "Dry"
+    },
+    {
+      "code": "waterFlow.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "waterAspect.CL",
+      "display": "Clear",
+      "definition": "Clear, you can see through it"
+    },
+    {
+      "code": "waterAspect.MU",
+      "display": "Muddy or cloudy",
+      "definition": "Muddy or cloudy"
+    },
+    {
+      "code": "waterAspect.FO",
+      "display": "Foam on the surface",
+      "definition": "Foam on the surface"
+    },
+    {
+      "code": "waterAspect.CO",
+      "display": "An unusual colour",
+      "definition": "An unusual colour"
+    },
+    {
+      "code": "waterAspect.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "withdrawal.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "withdrawal.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "withdrawal.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "dams.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "dams.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "dams.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "pollutedPipes.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "pollutedPipes.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "pollutedPipes.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "sewage.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "sewage.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "sewage.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "construction.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "construction.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "construction.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "impervious.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "impervious.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "impervious.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "vegCover.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "vegCover.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "vegCover.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "vegDominant.H",
+      "display": "Grass and herbs",
+      "definition": "Grass and herbs"
+    },
+    {
+      "code": "vegDominant.B",
+      "display": "Shrubs",
+      "definition": "Shrubs"
+    },
+    {
+      "code": "vegDominant.T",
+      "display": "Trees",
+      "definition": "Trees"
+    },
+    {
+      "code": "vegDominant.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "invasive.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "invasive.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "invasive.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "cuts.Y",
+      "display": "Yes",
+      "definition": "Yes"
+    },
+    {
+      "code": "cuts.N",
+      "display": "No",
+      "definition": "No"
+    },
+    {
+      "code": "cuts.NS",
+      "display": "I'm not sure",
+      "definition": "I'm not sure"
+    },
+    {
+      "code": "odor.none",
+      "display": "No smell",
+      "definition": "No smell"
+    },
+    {
+      "code": "odor.earthy",
+      "display": "Earthy or leafy",
+      "definition": "Earthy or leafy"
+    },
+    {
+      "code": "odor.sewage",
+      "display": "Sewage or rotten eggs",
+      "definition": "Sewage or rotten eggs"
+    },
+    {
+      "code": "odor.chemical",
+      "display": "Chemical or fuel",
+      "definition": "Chemical or fuel"
+    },
+    {
+      "code": "surface.scum",
+      "display": "Green scum like spilled paint",
+      "definition": "Green scum like spilled paint"
+    },
+    {
+      "code": "surface.oil",
+      "display": "Rainbow sheen (oil)",
+      "definition": "Rainbow sheen (oil)"
+    },
+    {
+      "code": "surface.litter",
+      "display": "Litter",
+      "definition": "Litter"
+    },
+    {
+      "code": "surface.none",
+      "display": "Nothing",
+      "definition": "Nothing"
+    },
+    {
+      "code": "contact.dogs",
+      "display": "Dogs swim or drink",
+      "definition": "Dogs swim or drink"
+    },
+    {
+      "code": "contact.children",
+      "display": "Children play in it",
+      "definition": "Children play in it"
+    },
+    {
+      "code": "contact.livestock",
+      "display": "Farm animals drink",
+      "definition": "Farm animals drink"
+    },
+    {
+      "code": "contact.none",
+      "display": "No one that I saw",
+      "definition": "No one that I saw"
+    },
+    {
+      "code": "overall.GOOD",
+      "display": "Good",
+      "definition": "Good: natural channel, plants on the banks, clean water, life"
+    },
+    {
+      "code": "overall.MODERATE",
+      "display": "Moderate",
+      "definition": "Moderate: some changes, but still green and alive"
+    },
+    {
+      "code": "overall.POOR",
+      "display": "Poor",
+      "definition": "Poor: heavily modified, little life, polluted"
+    }
+  ]
+}

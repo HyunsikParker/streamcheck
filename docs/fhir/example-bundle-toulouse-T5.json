@@ -1,0 +1,2035 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-09-23T03:00:00Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51",
+      "resource": {
+        "resourceType": "Location",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/location-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Marcaissonne aval (43.5678, 1.50937)</div>"
+        },
+        "identifier": [
+          {
+            "system": "https://oneaquahealth.eu/location-id",
+            "value": "T5"
+          }
+        ],
+        "status": "active",
+        "name": "Marcaissonne aval",
+        "mode": "instance",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "420531007",
+                "display": "River"
+              }
+            ]
+          }
+        ],
+        "description": "OneAquaHealth research site, Toulouse",
+        "position": {
+          "longitude": 1.50937,
+          "latitude": 43.5678
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f0287442-9dba-4113-b839-adc11309b775",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">What shape is the channel?: U shape</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "morophology",
+              "display": "Morphology of the streams"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "channelForm",
+              "display": "Channel form"
+            }
+          ],
+          "text": "What shape is the channel?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "channelForm.U",
+              "display": "U shape"
+            }
+          ],
+          "text": "U shape"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c89b52e2-6e7f-4bf0-8cee-18c77bc1b7f8",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">What is the bottom of the channel made of?: Natural: stones, sand, mud</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "morophology",
+              "display": "Morphology of the streams"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "channelType",
+              "display": "Channel bed"
+            }
+          ],
+          "text": "What is the bottom of the channel made of?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "channelType.NAT",
+              "display": "Natural: stones, sand, mud"
+            }
+          ],
+          "text": "Natural: stones, sand, mud"
+        },
+        "note": [
+          {
+            "text": "StreamCheck second look [good-with-pressures] You rated this stretch Good, but reported pressures. Outcome: answer kept: The outfall is 300 m below the stretch I rated.."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4c22ca2e-d2fb-4fab-b235-89b94d0b165a",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">What are the banks made of?: Concrete, or stones set in concrete</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "morophology",
+              "display": "Morphology of the streams"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "bankType",
+              "display": "Bank type"
+            }
+          ],
+          "text": "What are the banks made of?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "bankType.ART",
+              "display": "Concrete, or stones set in concrete"
+            }
+          ],
+          "text": "Concrete, or stones set in concrete"
+        },
+        "note": [
+          {
+            "text": "StreamCheck second look [good-with-pressures] You rated this stretch Good, but reported pressures. Outcome: answer kept: The outfall is 300 m below the stretch I rated.."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1f0c1aaa-5fdc-4127-bd3b-bcafce03dadb",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Which of these can you see in the stream?: Instream habitats: Sand banks</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "morophology",
+              "display": "Morphology of the streams"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "habitats",
+              "display": "Instream habitats"
+            }
+          ],
+          "text": "Which of these can you see in the stream?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "habitats",
+                  "display": "Instream habitats"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "habitats.SB",
+                  "display": "Sand banks"
+                }
+              ],
+              "text": "Sand banks"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:229c280c-5d9c-443a-99c0-f364f87987e5",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Any fallen wood or leaves in the water?: Natural debris: None</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "morophology",
+              "display": "Morphology of the streams"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "fallenBiomass",
+              "display": "Natural debris"
+            }
+          ],
+          "text": "Any fallen wood or leaves in the water?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "fallenBiomass",
+                  "display": "Natural debris"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "fallenBiomass.NONE",
+                  "display": "None"
+                }
+              ],
+              "text": "None"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b98ae0e0-ad23-4638-a1c2-9fa6b295a410",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">How is the water moving?: Slow</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "hydrology",
+              "display": "Hydrology of the stream"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "waterFlow",
+              "display": "Flow type"
+            }
+          ],
+          "text": "How is the water moving?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "waterFlow.NOR",
+              "display": "Slow"
+            }
+          ],
+          "text": "Slow"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5cc8be5c-c683-47d3-a3fc-1ae988e2fdb2",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">How does the water look?: Water aspect: Muddy or cloudy; Water aspect: Foam on the surface</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "foam",
+              "display": "Foam/colour/smell"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "waterAspect",
+              "display": "Water aspect"
+            }
+          ],
+          "text": "How does the water look?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "waterAspect",
+                  "display": "Water aspect"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "waterAspect.MU",
+                  "display": "Muddy or cloudy"
+                }
+              ],
+              "text": "Muddy or cloudy"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "waterAspect",
+                  "display": "Water aspect"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "waterAspect.FO",
+                  "display": "Foam on the surface"
+                }
+              ],
+              "text": "Foam on the surface"
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "StreamCheck second look [muddy-no-rain] Muddy water without rain. Outcome: open."
+          },
+          {
+            "text": "StreamCheck second look [foam-with-discharge] Foam together with a discharge. Outcome: safety note shown."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9952ca6f-9695-4930-8afb-be19a7c9240c",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Is water being pumped or taken out?: No</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "hydrology",
+              "display": "Hydrology of the stream"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "withdrawal",
+              "display": "Water abstraction"
+            }
+          ],
+          "text": "Is water being pumped or taken out?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "withdrawal.N",
+              "display": "No"
+            }
+          ],
+          "text": "No"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:86f12467-b97c-4ad9-b58b-45965f0d828c",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Any dams, weirs or barriers?: Yes</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "hydrology",
+              "display": "Hydrology of the stream"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "dams",
+              "display": "Longitudinal connectivity"
+            }
+          ],
+          "text": "Any dams, weirs or barriers?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "dams.Y",
+              "display": "Yes"
+            }
+          ],
+          "text": "Yes"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f4a4c591-2721-49d1-8702-df6ec7f0a6c1",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">How many?: 1 count</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "hydrology",
+              "display": "Hydrology of the stream"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "numberOfDams",
+              "display": "Barrier count"
+            }
+          ],
+          "text": "How many?"
+        },
+        "valueQuantity": {
+          "value": 1,
+          "unit": "count",
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4f2e7c96-a1df-4a3b-af34-17c9c6c7fbad",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Pipes draining dirty-looking water into the stream?: Yes</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "LandUse",
+              "display": "Land use in the margins"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "pollutedPipes",
+              "display": "Polluted outfalls"
+            }
+          ],
+          "text": "Pipes draining dirty-looking water into the stream?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "pollutedPipes.Y",
+              "display": "Yes"
+            }
+          ],
+          "text": "Yes"
+        },
+        "note": [
+          {
+            "text": "StreamCheck second look [good-with-pressures] You rated this stretch Good, but reported pressures. Outcome: answer kept: The outfall is 300 m below the stretch I rated.."
+          },
+          {
+            "text": "StreamCheck second look [foam-with-discharge] Foam together with a discharge. Outcome: safety note shown."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4f9c5754-7901-462f-b463-83b31e6b4282",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Signs of sewage going in?: I'm not sure</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "LandUse",
+              "display": "Land use in the margins"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "sewage",
+              "display": "Sewage discharge"
+            }
+          ],
+          "text": "Signs of sewage going in?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "sewage.NS",
+              "display": "I'm not sure"
+            }
+          ],
+          "text": "I'm not sure"
+        },
+        "note": [
+          {
+            "text": "StreamCheck second look [good-with-pressures] You rated this stretch Good, but reported pressures. Outcome: answer kept: The outfall is 300 m below the stretch I rated.."
+          },
+          {
+            "text": "StreamCheck second look [foam-with-discharge] Foam together with a discharge. Outcome: safety note shown."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3e0850ef-6248-4dc7-9894-f20426b1fcbe",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Construction work in or next to the stream?: No</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "morophology",
+              "display": "Morphology of the streams"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "construction",
+              "display": "Channel works"
+            }
+          ],
+          "text": "Construction work in or next to the stream?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "construction.N",
+              "display": "No"
+            }
+          ],
+          "text": "No"
+        },
+        "note": [
+          {
+            "text": "StreamCheck second look [muddy-no-rain] Muddy water without rain. Outcome: open."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:533624c5-5f2a-42bd-835d-df4b7c9c9907",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Is more than a third of it paved or built on?: Impervious surface, left bank: Yes; Impervious surface, right bank: No</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "LandUse",
+              "display": "Land use in the margins"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "impervious",
+              "display": "Impervious surface"
+            }
+          ],
+          "text": "Is more than a third of it paved or built on?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "imperviousL",
+                  "display": "Impervious surface, left bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "impervious.Y",
+                  "display": "Yes"
+                }
+              ],
+              "text": "Yes"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "imperviousR",
+                  "display": "Impervious surface, right bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "impervious.N",
+                  "display": "No"
+                }
+              ],
+              "text": "No"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d905be60-11dc-424c-a340-92b0c6136895",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Is it covered by plants?: Riparian vegetation cover, left bank: No; Riparian vegetation cover, right bank: Yes</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "riparianVegetation",
+              "display": "Riparian vegetation"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "vegCover",
+              "display": "Riparian vegetation cover"
+            }
+          ],
+          "text": "Is it covered by plants?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "vegCoverL",
+                  "display": "Riparian vegetation cover, left bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "vegCover.N",
+                  "display": "No"
+                }
+              ],
+              "text": "No"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "vegCoverR",
+                  "display": "Riparian vegetation cover, right bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "vegCover.Y",
+                  "display": "Yes"
+                }
+              ],
+              "text": "Yes"
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "StreamCheck second look [dominant-without-cover-L] The left margin has no plant cover, but a dominant plant type. Outcome: open."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:409842f0-6a04-4809-94e2-6572df78ecbe",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Which plants cover most of it?: Dominant vegetation, left bank: Grass and herbs; Dominant vegetation, right bank: Grass and herbs</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "riparianVegetation",
+              "display": "Riparian vegetation"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "vegDominant",
+              "display": "Dominant vegetation"
+            }
+          ],
+          "text": "Which plants cover most of it?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "vegDominantL",
+                  "display": "Dominant vegetation, left bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "vegDominant.H",
+                  "display": "Grass and herbs"
+                }
+              ],
+              "text": "Grass and herbs"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "vegDominantR",
+                  "display": "Dominant vegetation, right bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "vegDominant.H",
+                  "display": "Grass and herbs"
+                }
+              ],
+              "text": "Grass and herbs"
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "StreamCheck second look [dominant-without-cover-L] The left margin has no plant cover, but a dominant plant type. Outcome: open."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6523a139-4f79-4879-ba81-4d5b2afcbc82",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Any invasive plants?: Invasive species, left bank: I'm not sure; Invasive species, right bank: Yes</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "invasiveOrganisms",
+              "display": "Invasive invertebrate, plants and fish"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "invasive",
+              "display": "Invasive species"
+            }
+          ],
+          "text": "Any invasive plants?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "invasiveL",
+                  "display": "Invasive species, left bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "invasive.NS",
+                  "display": "I'm not sure"
+                }
+              ],
+              "text": "I'm not sure"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "invasiveR",
+                  "display": "Invasive species, right bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "invasive.Y",
+                  "display": "Yes"
+                }
+              ],
+              "text": "Yes"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f65aa945-cb16-49f4-8c30-e829ce6b4699",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Has vegetation been cut recently?: Vegetation management, left bank: Yes; Vegetation management, right bank: No</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "riparianVegetation",
+              "display": "Riparian vegetation"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "cuts",
+              "display": "Vegetation management"
+            }
+          ],
+          "text": "Has vegetation been cut recently?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "cutsL",
+                  "display": "Vegetation management, left bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "cuts.Y",
+                  "display": "Yes"
+                }
+              ],
+              "text": "Yes"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "cutsR",
+                  "display": "Vegetation management, right bank"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "cuts.N",
+                  "display": "No"
+                }
+              ],
+              "text": "No"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c1804c46-dc2a-40b2-b74f-f95569f1c0ec",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Does the water smell?: Sewage or rotten eggs</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "foam",
+              "display": "Foam/colour/smell"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "odor",
+              "display": "Odour"
+            }
+          ],
+          "text": "Does the water smell?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "odor.sewage",
+              "display": "Sewage or rotten eggs"
+            }
+          ],
+          "text": "Sewage or rotten eggs"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:debfaebe-ec4e-49b3-8a14-71cb6d53f390",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Anything floating on top?: Surface film: Litter</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.eu/fhir/ig/oah/CodeSystem/temporarySystem-oah-eu",
+              "code": "foam",
+              "display": "Foam/colour/smell"
+            },
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "surface",
+              "display": "Surface film"
+            }
+          ],
+          "text": "Anything floating on top?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "surface",
+                  "display": "Surface film"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "surface.litter",
+                  "display": "Litter"
+                }
+              ],
+              "text": "Litter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:94713115-3b4f-441e-ac66-75e8267b907f",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Who uses the water here?: Exposure: Children play in it</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "contact",
+              "display": "Exposure"
+            }
+          ],
+          "text": "Who uses the water here?"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "contact",
+                  "display": "Exposure"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+                  "code": "contact.children",
+                  "display": "Children play in it"
+                }
+              ],
+              "text": "Children play in it"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:09762754-c71b-4061-a617-acdde0994ac0",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">How would you rate this stretch of stream?: Good: natural channel, plants on the banks, clean water, life</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "overall",
+              "display": "Overall stream assessment"
+            }
+          ],
+          "text": "How would you rate this stretch of stream?"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "overall.GOOD",
+              "display": "Good: natural channel, plants on the banks, clean water, life"
+            }
+          ],
+          "text": "Good: natural channel, plants on the banks, clean water, life"
+        },
+        "note": [
+          {
+            "text": "StreamCheck second look [good-with-pressures] You rated this stretch Good, but reported pressures. Outcome: answer kept: The outfall is 300 m below the stretch I rated.."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:839c0d0e-f406-48a2-ab2a-a8a400d371d2",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">How the place made the citizen feel (0-5): joy: 2 score; serenity: 2 score; anger: 3 score; fear: 1 score</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "Citizen scientist (anonymous)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "feelings",
+              "display": "Well-being at the site"
+            }
+          ],
+          "text": "How the place made the citizen feel (0-5)"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "feelings.joy",
+                  "display": "joy"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 2,
+              "unit": "score",
+              "system": "http://unitsofmeasure.org",
+              "code": "1"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "feelings.serenity",
+                  "display": "serenity"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 2,
+              "unit": "score",
+              "system": "http://unitsofmeasure.org",
+              "code": "1"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "feelings.anger",
+                  "display": "anger"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 3,
+              "unit": "score",
+              "system": "http://unitsofmeasure.org",
+              "code": "1"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "feelings.fear",
+                  "display": "fear"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 1,
+              "unit": "score",
+              "system": "http://unitsofmeasure.org",
+              "code": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6468e475-3af3-4977-9120-08ce2f6768fd",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Recent weather at the site: Precipitation, last 48 h: 0 mm; Mean air temperature, last 3 days: 21.6 °C; Maximum air temperature today: 30.3 °C</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T02:54:00Z",
+        "performer": [
+          {
+            "display": "Open-Meteo (api.open-meteo.com)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "weatherContext",
+              "display": "Recent weather at the site"
+            }
+          ],
+          "text": "Recent weather at the site"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "rain48h",
+                  "display": "Precipitation, last 48 h"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 0,
+              "unit": "mm",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "airMean3d",
+                  "display": "Mean air temperature, last 3 days"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 21.6,
+              "unit": "°C",
+              "system": "http://unitsofmeasure.org",
+              "code": "Cel"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+                  "code": "airMaxToday",
+                  "display": "Maximum air temperature today"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 30.3,
+              "unit": "°C",
+              "system": "http://unitsofmeasure.org",
+              "code": "Cel"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b44cada4-ee49-4fe1-843d-51f7b07de1ed",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "http://hl7.eu/fhir/ig/oah/StructureDefinition/observation-indicators-oah"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Indicator-based suggestion on the OAH Good/Moderate/Poor scale: Poor</div>"
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:5d83a3d8-82eb-4227-842d-819d1db3dc51"
+        },
+        "effectiveDateTime": "2026-09-23T03:00:00Z",
+        "performer": [
+          {
+            "display": "StreamCheck indicator rules v1 (decision support, not a measurement)"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+              "code": "indicatorSuggestion",
+              "display": "Indicator-based condition suggestion"
+            }
+          ],
+          "text": "Indicator-based suggestion on the OAH Good/Moderate/Poor scale"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-answer",
+              "code": "overall.POOR",
+              "display": "Poor"
+            }
+          ],
+          "text": "Poor"
+        },
+        "note": [
+          {
+            "text": "Average of 4 indicator groups."
+          }
+        ],
+        "derivedFrom": [
+          {
+            "reference": "urn:uuid:f0287442-9dba-4113-b839-adc11309b775"
+          },
+          {
+            "reference": "urn:uuid:c89b52e2-6e7f-4bf0-8cee-18c77bc1b7f8"
+          },
+          {
+            "reference": "urn:uuid:4c22ca2e-d2fb-4fab-b235-89b94d0b165a"
+          },
+          {
+            "reference": "urn:uuid:1f0c1aaa-5fdc-4127-bd3b-bcafce03dadb"
+          },
+          {
+            "reference": "urn:uuid:229c280c-5d9c-443a-99c0-f364f87987e5"
+          },
+          {
+            "reference": "urn:uuid:b98ae0e0-ad23-4638-a1c2-9fa6b295a410"
+          },
+          {
+            "reference": "urn:uuid:5cc8be5c-c683-47d3-a3fc-1ae988e2fdb2"
+          },
+          {
+            "reference": "urn:uuid:9952ca6f-9695-4930-8afb-be19a7c9240c"
+          },
+          {
+            "reference": "urn:uuid:86f12467-b97c-4ad9-b58b-45965f0d828c"
+          },
+          {
+            "reference": "urn:uuid:f4a4c591-2721-49d1-8702-df6ec7f0a6c1"
+          },
+          {
+            "reference": "urn:uuid:4f2e7c96-a1df-4a3b-af34-17c9c6c7fbad"
+          },
+          {
+            "reference": "urn:uuid:4f9c5754-7901-462f-b463-83b31e6b4282"
+          },
+          {
+            "reference": "urn:uuid:3e0850ef-6248-4dc7-9894-f20426b1fcbe"
+          },
+          {
+            "reference": "urn:uuid:533624c5-5f2a-42bd-835d-df4b7c9c9907"
+          },
+          {
+            "reference": "urn:uuid:d905be60-11dc-424c-a340-92b0c6136895"
+          },
+          {
+            "reference": "urn:uuid:409842f0-6a04-4809-94e2-6572df78ecbe"
+          },
+          {
+            "reference": "urn:uuid:6523a139-4f79-4879-ba81-4d5b2afcbc82"
+          },
+          {
+            "reference": "urn:uuid:f65aa945-cb16-49f4-8c30-e829ce6b4699"
+          },
+          {
+            "reference": "urn:uuid:c1804c46-dc2a-40b2-b74f-f95569f1c0ec"
+          },
+          {
+            "reference": "urn:uuid:debfaebe-ec4e-49b3-8a14-71cb6d53f390"
+          },
+          {
+            "reference": "urn:uuid:94713115-3b4f-441e-ac66-75e8267b907f"
+          },
+          {
+            "reference": "urn:uuid:09762754-c71b-4061-a617-acdde0994ac0"
+          },
+          {
+            "reference": "urn:uuid:839c0d0e-f406-48a2-ab2a-a8a400d371d2"
+          },
+          {
+            "reference": "urn:uuid:6468e475-3af3-4977-9120-08ce2f6768fd"
+          }
+        ]
+      }
+    }
+  ]
+}

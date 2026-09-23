@@ -1,0 +1,217 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "citizen-question",
+  "url": "https://hyunsikparker.github.io/streamcheck/fhir/CodeSystem/citizen-question",
+  "version": "0.1.0",
+  "name": "StreamCheckcitizenquestions",
+  "title": "StreamCheck citizen questions",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "StreamCheck (IEEE OneAquaHealth Global Hackathon 2026 prototype)",
+  "description": "Proposed codes for the OneAquaHealth citizen stream assessment, which the OAH FHIR IG (hl7-eu/oah 0.1.0) does not model yet. Answer codes reuse the OAH app codes (api.enora-oah.eu/api/citizens/*).",
+  "caseSensitive": true,
+  "content": "complete",
+  "count": 40,
+  "concept": [
+    {
+      "code": "channelForm",
+      "display": "Channel form",
+      "definition": "What shape is the channel?"
+    },
+    {
+      "code": "channelType",
+      "display": "Channel bed",
+      "definition": "What is the bottom of the channel made of?"
+    },
+    {
+      "code": "bankType",
+      "display": "Bank type",
+      "definition": "What are the banks made of?"
+    },
+    {
+      "code": "habitats",
+      "display": "Instream habitats",
+      "definition": "Which of these can you see in the stream?"
+    },
+    {
+      "code": "fallenBiomass",
+      "display": "Natural debris",
+      "definition": "Any fallen wood or leaves in the water?"
+    },
+    {
+      "code": "waterFlow",
+      "display": "Flow type",
+      "definition": "How is the water moving?"
+    },
+    {
+      "code": "waterAspect",
+      "display": "Water aspect",
+      "definition": "How does the water look?"
+    },
+    {
+      "code": "withdrawal",
+      "display": "Water abstraction",
+      "definition": "Is water being pumped or taken out?"
+    },
+    {
+      "code": "dams",
+      "display": "Longitudinal connectivity",
+      "definition": "Any dams, weirs or barriers?"
+    },
+    {
+      "code": "numberOfDams",
+      "display": "Barrier count",
+      "definition": "How many?"
+    },
+    {
+      "code": "pollutedPipes",
+      "display": "Polluted outfalls",
+      "definition": "Pipes draining dirty-looking water into the stream?"
+    },
+    {
+      "code": "sewage",
+      "display": "Sewage discharge",
+      "definition": "Signs of sewage going in?"
+    },
+    {
+      "code": "construction",
+      "display": "Channel works",
+      "definition": "Construction work in or next to the stream?"
+    },
+    {
+      "code": "waterHeight",
+      "display": "Water height",
+      "definition": "About how deep is the water?"
+    },
+    {
+      "code": "impervious",
+      "display": "Impervious surface",
+      "definition": "Is more than a third of it paved or built on?"
+    },
+    {
+      "code": "imperviousL",
+      "display": "Impervious surface, left bank",
+      "definition": "Is more than a third of it paved or built on? (left bank)"
+    },
+    {
+      "code": "imperviousR",
+      "display": "Impervious surface, right bank",
+      "definition": "Is more than a third of it paved or built on? (right bank)"
+    },
+    {
+      "code": "vegCover",
+      "display": "Riparian vegetation cover",
+      "definition": "Is it covered by plants?"
+    },
+    {
+      "code": "vegCoverL",
+      "display": "Riparian vegetation cover, left bank",
+      "definition": "Is it covered by plants? (left bank)"
+    },
+    {
+      "code": "vegCoverR",
+      "display": "Riparian vegetation cover, right bank",
+      "definition": "Is it covered by plants? (right bank)"
+    },
+    {
+      "code": "vegDominant",
+      "display": "Dominant vegetation",
+      "definition": "Which plants cover most of it?"
+    },
+    {
+      "code": "vegDominantL",
+      "display": "Dominant vegetation, left bank",
+      "definition": "Which plants cover most of it? (left bank)"
+    },
+    {
+      "code": "vegDominantR",
+      "display": "Dominant vegetation, right bank",
+      "definition": "Which plants cover most of it? (right bank)"
+    },
+    {
+      "code": "invasive",
+      "display": "Invasive species",
+      "definition": "Any invasive plants?"
+    },
+    {
+      "code": "invasiveL",
+      "display": "Invasive species, left bank",
+      "definition": "Any invasive plants? (left bank)"
+    },
+    {
+      "code": "invasiveR",
+      "display": "Invasive species, right bank",
+      "definition": "Any invasive plants? (right bank)"
+    },
+    {
+      "code": "cuts",
+      "display": "Vegetation management",
+      "definition": "Has vegetation been cut recently?"
+    },
+    {
+      "code": "cutsL",
+      "display": "Vegetation management, left bank",
+      "definition": "Has vegetation been cut recently? (left bank)"
+    },
+    {
+      "code": "cutsR",
+      "display": "Vegetation management, right bank",
+      "definition": "Has vegetation been cut recently? (right bank)"
+    },
+    {
+      "code": "odor",
+      "display": "Odour",
+      "definition": "Does the water smell?"
+    },
+    {
+      "code": "surface",
+      "display": "Surface film",
+      "definition": "Anything floating on top?"
+    },
+    {
+      "code": "waterTemp",
+      "display": "Water temperature",
+      "definition": "Water temperature, if you have a thermometer"
+    },
+    {
+      "code": "contact",
+      "display": "Exposure",
+      "definition": "Who uses the water here?"
+    },
+    {
+      "code": "overall",
+      "display": "Overall stream assessment",
+      "definition": "How would you rate this stretch of stream?"
+    },
+    {
+      "code": "feelings",
+      "display": "Well-being",
+      "definition": "How does this place make you feel? (optional)"
+    },
+    {
+      "code": "weatherContext",
+      "display": "Recent weather at the site",
+      "definition": "Open-Meteo summary used by the second-look checks"
+    },
+    {
+      "code": "rain48h",
+      "display": "Precipitation, last 48 h",
+      "definition": "Sum of hourly precipitation over the 48 hours before the assessment"
+    },
+    {
+      "code": "airMean3d",
+      "display": "Mean air temperature, last 3 days",
+      "definition": "Mean hourly air temperature over the 72 hours before the assessment"
+    },
+    {
+      "code": "airMaxToday",
+      "display": "Maximum air temperature today",
+      "definition": "Highest hourly air temperature on the local calendar day"
+    },
+    {
+      "code": "indicatorSuggestion",
+      "display": "Indicator-based condition suggestion",
+      "definition": "Decision-support class on the OAH Good/Moderate/Poor scale; not a measurement"
+    }
+  ]
+}
