@@ -21,7 +21,7 @@ Built for the IEEE OneAquaHealth Global Hackathon 2026, **Track 3: AI-Supported 
 5. **Result.** The citizen's rating is the recorded one. Next to it, an indicator view on the same scale (channel and banks, water, margins, flow pressures), how far apart the two are, a confidence level, One Health notes for the ecosystem, animals and people, and the list of second-look decisions.
 6. **Export.** FHIR R4 Bundle, CSV, and a local history with a map.
 
-Nothing is sent anywhere except the weather request. Records stay in the browser.
+Nothing is sent anywhere except the weather request. Records stay in the browser. The app installs as a PWA and works offline after the first visit (the service worker caches the app shell); without a connection, weather checks are skipped and the app says so.
 
 ## FHIR alignment
 

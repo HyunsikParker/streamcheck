@@ -461,3 +461,7 @@ function toast(msg) {
 }
 
 render();
+
+// Offline support (see sw.js). Weather still needs a connection.
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {});
+window.addEventListener('offline', () => toast('Offline: you can keep going; weather checks will be skipped'));
