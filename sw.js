@@ -1,7 +1,7 @@
 // Offline support: the app shell is cached so an assessment can be filled in
 // without signal. Weather needs the network; without it, weather checks are
 // skipped and the app says so.
-const CACHE = 'streamcheck-v2';
+const CACHE = 'streamcheck-v3';
 const SHELL = [
   './', './index.html', './styles.css', './manifest.webmanifest', './icon.svg',
   './src/app.js', './src/protocol.js', './src/checks.js', './src/score.js', './src/fhir.js',

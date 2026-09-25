@@ -22,7 +22,7 @@ Built for the IEEE OneAquaHealth Global Hackathon 2026, **Track 3: AI-Supported 
 6. **Field evidence (optional).** "Confirm I'm here" compares the phone's position with the chosen site. Upstream, downstream and surroundings photos, as in the OAH app, are read on the device for their capture time and GPS. Being more than 500 m away (or beyond the GPS accuracy), a photo taken elsewhere, or a photo older than two days each raise a second-look check. Photos never leave the device; only size and hashes are kept.
 7. **Export.** FHIR R4 Bundle, CSV, and a local history with a map.
 
-Nothing is sent anywhere except the weather request. Records stay in the browser. The app installs as a PWA and works offline after the first visit (the service worker caches the app shell); without a connection, weather checks are skipped and the app says so.
+Assessment records and photos stay in the browser. Open-Meteo receives the selected site's coordinates for weather. Map tiles load from OpenStreetMap; Leaflet and fonts load from their CDNs. The app installs as a PWA and works offline after the first visit (the service worker caches the app shell); without a connection, weather checks are skipped and the app says so.
 
 ## FHIR alignment
 

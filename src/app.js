@@ -19,6 +19,7 @@ let stepIndex = 0;
 let map = null;
 let marker = null;
 let focusKey = null;
+let weatherRequest = 0;
 
 function blank() {
   return { site: { code: null, name: '', city: null, lat: null, lon: null }, weather: null, weatherState: 'idle', obs: {}, decisions: {}, evidence: { here: null, photos: {} }, createdAt: null, example: null };
@@ -119,7 +120,9 @@ function weatherBlock() {
 }
 
 async function setSite(lat, lon, oah = null) {
-  const s = d().site;
+  const draft = d();
+  const request = ++weatherRequest;
+  const s = draft.site;
   if (oah) Object.assign(s, { code: oah.code, name: oah.name.trim() || oah.code, city: oah.city, lat: oah.lat, lon: oah.lon });
   else Object.assign(s, { code: null, city: null, lat: Math.round(lat * 1e5) / 1e5, lon: Math.round(lon * 1e5) / 1e5 });
   if (screen === 'place') {
@@ -132,11 +135,16 @@ async function setSite(lat, lon, oah = null) {
     if (s.code && !row) $('[data-act="locate"]').insertAdjacentHTML('afterend', `<span class="site-chip">Research site ${esc(s.code)} · ${esc(s.city)}</span>`);
     else if (row) row.outerHTML = s.code ? `<span class="site-chip">Research site ${esc(s.code)} · ${esc(s.city)}</span>` : '';
   }
-  d().weatherState = 'loading';
+  // Old-site weather must not influence checks while the new request is pending.
+  draft.weather = null;
+  draft.weatherState = 'loading';
+  save();
   if (screen === 'place') $('#wx').innerHTML = weatherBlock();
   const w = await fetchWeather(s.lat, s.lon);
-  d().weather = w;
-  d().weatherState = w ? 'ok' : 'failed';
+  // A slower response may belong to an earlier site or a discarded assessment.
+  if (request !== weatherRequest || d() !== draft) return;
+  draft.weather = w;
+  draft.weatherState = w ? 'ok' : 'failed';
   save();
   if (screen === 'place') $('#wx').innerHTML = weatherBlock();
 }
